@@ -59,21 +59,16 @@ jobs:
 workflows:
   default-deploy:
     jobs:
-      - install:
-          context: global
+      - install
       - build:
-          context: global
           requires:
             - install
       - lint:
-          context: global
           requires:
             - install
       - test:
-          context: global
           requires:
             - install
       - cypress:
-          context: global
           requires:
             - build
