@@ -16,3 +16,4 @@ export const useStringParam = (paramName: string): string | undefined => {
 
 export const useCountry = () => useStringParam('country');
 export const useArticleId = () => useStringParam('articleId');
+export const useSearchTerm = () => useStringParam('searchTerm');

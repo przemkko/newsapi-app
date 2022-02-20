@@ -6,7 +6,7 @@ const COUNTRY_DISPLAY_NAME: Record<string, string> = {
 };
 
 export const getCountryDisplayName = (country = '') => {
-  return COUNTRY_DISPLAY_NAME[country] ?? 'N/A';
+  return COUNTRY_DISPLAY_NAME[country] ?? '...';
 };
 
 export const TOP_NAVIGATION_ITEMS: { name: string; href: string }[] = [

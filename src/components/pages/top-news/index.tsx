@@ -2,9 +2,7 @@ import { useCountry } from '../../../hooks/params';
 import { useNewsQuery } from '../../../hooks/query/news';
 import Typography from '@mui/material/Typography';
 import { getCountryDisplayName } from '../../../constants';
-import { NewsItem } from '../../news-item';
-import { Box } from '@mui/material';
-import { NewsItemSkeleton } from '../../news-item/skeleton';
+import { NewsItemCollection } from '../../news-item/collection';
 
 export const TopNewsContent = (): JSX.Element => {
   const country = useCountry();
@@ -15,23 +13,11 @@ export const TopNewsContent = (): JSX.Element => {
       <Typography variant="h4" sx={{ mb: 3 }}>
         Top news from {getCountryDisplayName(country)}
       </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          alignItems: 'stretch',
-          justifyContent: 'center',
-        }}
-      >
-        {(isLoading || !country) &&
-          new Array(20)
-            .fill(undefined)
-            .map((_, index) => <NewsItemSkeleton key={index} />)}
-        {data?.articles.map((article, index) => (
-          <NewsItem key={index} article={article} />
-        ))}
-      </Box>
+      <NewsItemCollection
+        articles={data?.articles}
+        isLoading={isLoading || !country}
+        skeletonCount={20}
+      />
     </div>
   );
 };
