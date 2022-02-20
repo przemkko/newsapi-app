@@ -1,7 +1,12 @@
 import { Layout } from '../../src/components/layout';
+import { CategoriesContent } from '../../src/components/pages/categories';
 
 const CategoriesPage = () => {
-  return <Layout>Hi!</Layout>;
+  return (
+    <Layout>
+      <CategoriesContent />
+    </Layout>
+  );
 };
 
 export default CategoriesPage;

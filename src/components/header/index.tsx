@@ -12,11 +12,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 
 import { CountrySelector } from './CountrySelector';
-import { TOP_NAVIGATION_ITEMS } from '../../util';
-import { useRouter } from 'next/router';
+import { TOP_NAVIGATION_ITEMS } from '../../constants';
+import { useCountry } from '../../hooks/params';
 
 export const Header = ({}): JSX.Element => {
-  const { query } = useRouter();
+  const country = useCountry();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -77,7 +77,7 @@ export const Header = ({}): JSX.Element => {
                     key={item.href}
                     href={{
                       pathname: item.href,
-                      query: { country: query.country },
+                      query: { country },
                     }}
                     passHref
                   >
@@ -101,7 +101,7 @@ export const Header = ({}): JSX.Element => {
                 key={item.href}
                 href={{
                   pathname: item.href,
-                  query: { country: query.country },
+                  query: { country },
                 }}
                 passHref
               >

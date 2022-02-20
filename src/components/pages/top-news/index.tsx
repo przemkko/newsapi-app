@@ -1,14 +1,14 @@
 import { useCountry } from '../../../hooks/params';
-import { useTopHeadlines } from '../../../hooks/query/news';
+import { useNewsQuery } from '../../../hooks/query/news';
 import Typography from '@mui/material/Typography';
-import { getCountryDisplayName } from '../../../util';
+import { getCountryDisplayName } from '../../../constants';
 import { NewsItem } from '../../news-item';
 import { Box } from '@mui/material';
 import { NewsItemSkeleton } from '../../news-item/skeleton';
 
 export const TopNewsContent = (): JSX.Element => {
   const country = useCountry();
-  const { data, isLoading } = useTopHeadlines(country);
+  const { data, isLoading } = useNewsQuery(country);
   console.log(data);
   return (
     <div>
@@ -24,7 +24,7 @@ export const TopNewsContent = (): JSX.Element => {
           justifyContent: 'center',
         }}
       >
-        {isLoading &&
+        {(isLoading || !country) &&
           new Array(20)
             .fill(undefined)
             .map((_, index) => <NewsItemSkeleton key={index} />)}
