@@ -1,8 +1,8 @@
 describe('Home Flow', () => {
   it('renders', () => {
     cy.visit('/');
-    cy.findByRole('heading', {
-      name: /welcome to next\.js!/i,
+    cy.findByRole('link', {
+      name: /Top News/i,
     }).should('exist');
   });
 });

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 export const CountrySelector = () => {
   const router = useRouter();
   const { country } = router.query;
+  const isSingleNewsView = router.pathname === '/[country]/news';
 
   const switchCountry = (newCountry: string | null) => {
     if (!newCountry || newCountry === country) {
@@ -16,6 +17,7 @@ export const CountrySelector = () => {
       query: { country: newCountry },
     });
   };
+
   return (
     <Box sx={{ flexGrow: 0 }}>
       <ToggleButtonGroup
@@ -27,14 +29,14 @@ export const CountrySelector = () => {
         <ToggleButton
           value="gb"
           aria-label="left aligned"
-          disabled={country === 'gb'}
+          disabled={isSingleNewsView || country === 'gb'}
         >
           GB
         </ToggleButton>
         <ToggleButton
           value="us"
           aria-label="centered"
-          disabled={country === 'us'}
+          disabled={isSingleNewsView || country === 'us'}
         >
           US
         </ToggleButton>
