@@ -9,11 +9,14 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import { CountrySelector } from './CountrySelector';
+import Link from 'next/link';
 
-const pages = ['Top News', 'Categories', 'Search'];
+import { CountrySelector } from './CountrySelector';
+import { TOP_NAVIGATION_ITEMS } from '../../util';
+import { useRouter } from 'next/router';
 
 export const Header = ({}): JSX.Element => {
+  const { query } = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -68,9 +71,18 @@ export const Header = ({}): JSX.Element => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {TOP_NAVIGATION_ITEMS.map((item) => (
+                <MenuItem key={item.href} onClick={handleCloseNavMenu}>
+                  <Link
+                    key={item.href}
+                    href={{
+                      pathname: item.href,
+                      query: { country: query.country },
+                    }}
+                    passHref
+                  >
+                    <Typography textAlign="center">{item.name}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -84,14 +96,19 @@ export const Header = ({}): JSX.Element => {
             NewsAPI App
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+            {TOP_NAVIGATION_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={{
+                  pathname: item.href,
+                  query: { country: query.country },
+                }}
+                passHref
               >
-                {page}
-              </Button>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                  {item.name}
+                </Button>
+              </Link>
             ))}
           </Box>
           <CountrySelector />
