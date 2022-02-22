@@ -5,13 +5,18 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:country((?!gb|us).*)',
-        destination: '/gb',
+        source: '/',
+        destination: '/news/gb',
         permanent: false,
       },
       {
-        source: '/:country',
-        destination: '/:country/top',
+        source: '/news/:country((?!gb|us).*)',
+        destination: '/news/gb',
+        permanent: false,
+      },
+      {
+        source: '/news/:country',
+        destination: '/news/:country/top',
         permanent: false,
       },
     ];

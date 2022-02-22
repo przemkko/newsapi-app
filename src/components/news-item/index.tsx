@@ -44,7 +44,7 @@ export const NewsItem = ({ article }: NewsItemProps): JSX.Element => {
       <CardActions>
         <Link
           href={{
-            pathname: '/[country]/news',
+            pathname: '/news/[country]/article',
             query: {
               articleId: article.id,
               country,

@@ -10,9 +10,9 @@ export const getCountryDisplayName = (country = '') => {
 };
 
 export const TOP_NAVIGATION_ITEMS: { name: string; href: string }[] = [
-  { name: 'Top News', href: '/[country]/top' },
-  { name: 'Categories', href: '/[country]/categories' },
-  { name: 'Search', href: '/[country]/search' },
+  { name: 'Top News', href: '/news/[country]/top' },
+  { name: 'Categories', href: '/news/[country]/categories' },
+  { name: 'Search', href: '/news/[country]/search' },
 ];
 
 export const TOP_CATEGORIES: NewsCategory[] = [

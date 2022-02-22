@@ -4,6 +4,13 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material';
 import { theme } from '../src/theme';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { isServer } from '../src/util';
+
+if (process.env.NEXT_PUBLIC_ENABLE_MOCKING === 'true' && !isServer()) {
+  import('../mocks/browser').then(({ worker }) =>
+    worker.start().catch(console.warn)
+  );
+}
 
 const queryClient = new QueryClient();
 

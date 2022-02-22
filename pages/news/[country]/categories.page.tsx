@@ -1,5 +1,5 @@
-import { Layout } from '../../src/components/layout';
-import { CategoriesContent } from '../../src/components/pages/categories';
+import { Layout } from '../../../src/components/layout';
+import { CategoriesContent } from '../../../src/components/pages/categories';
 
 const CategoriesPage = () => {
   return (
