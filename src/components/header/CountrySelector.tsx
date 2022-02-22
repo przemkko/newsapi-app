@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 export const CountrySelector = () => {
   const router = useRouter();
   const { country } = router.query;
-  const isSingleNewsView = router.pathname === '/news/[country]/news';
+  const isSingleNewsView = router.pathname === '/news/[country]/article';
 
   const switchCountry = (newCountry: string | null) => {
     if (!newCountry || newCountry === country) {
