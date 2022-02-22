@@ -7,7 +7,6 @@ import { NewsItemCollection } from '../../news-item/collection';
 export const TopNewsContent = (): JSX.Element => {
   const country = useCountry();
   const { data, isLoading } = useNewsQuery(country);
-  console.log(data);
   return (
     <div>
       <Typography variant="h4" sx={{ mb: 3 }}>
